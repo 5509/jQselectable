@@ -108,14 +108,14 @@
 				
 				this.mat = $j('<div/>');
 				
-				// Customed
+				// Customized
 				if(_style=='sBox'){
 
 					this.mat.append('<div class="sBoxHead"></div><div class="sBoxBody"></div><div class="sBoxFoot"></div>');
 				}else{
 					this.mat.append('<div class="head"></div><div class="body"></div><div class="foot"></div>');
 				}
-				// Customed end
+				// Customized end
 				
 				this.mat.attr({
 					id: this.attrs.id+'_mat'
