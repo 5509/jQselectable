@@ -120,7 +120,6 @@
 					this.mat.append(this.temp.simpleBox);
 				}
 				// Customized end
-				
 				this.mat.attr({
 					id: this.attrs.id+'_mat'
 				}).addClass(_style).addClass(this.attrs.cl);
@@ -131,6 +130,7 @@
 				if($('div.simple_cont',this.mat).children().length>0){
 					$('div.simple_cont',this.mat).empty();
 				}
+
 			}else{
 				if(this.mat.children().length>0){
 					$('div.sctble_cont',this.mat).empty();
@@ -138,6 +138,7 @@
 				}
 			}
 			
+			this._div = $('<div class="body"/>');
 			if(has_optgroup){
 				var _optgroup = $('optgroup',this.target);
 				var _option = [];
@@ -156,16 +157,15 @@
 					}
 					_dl.append(_dt).append(_dd);
 				}
-				$('div.sctble_body',this.mat).append(_dl).addClass('optg');
+				this._div.append(_dl).addClass('optg');
+				$('div',this.mat).append(this._div);
 				
 			}else{
 				var _option = $('option',this.target);
-				
-				this._div = $('<div class="body"/>');
 				for(var i=0;i<_option.length;i++){
-					generate_anchors($(_option[i]),_div);
+					generate_anchors($(_option[i]),this._div);
 				}
-				$('div.sctble_body',this.mat).append(this._div).addClass('nooptg');
+				$('div',this.mat).append(this._div).addClass('nooptg');
 			}
 			
 			// For rebuilding
