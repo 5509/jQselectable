@@ -18,7 +18,7 @@
 	// @ 2009-09-16
 	var jQselectable = function(select,options,temp){
 		this.conf = {
-			style: 'selectable', // or 'simpleBox'
+			style: 'selectable', // or 'simple'
 			set: 'show', // 'show', 'slideDown' or 'fadeIn'
 			out: 'hide', // 'hide', 'slideUp' or 'fadeOut'
 			setDuration: 'normal', // 'slow', 'normal', 'fast' or int(millisecond)
@@ -102,7 +102,7 @@
 			if(!this.m_input){
 				this.m_input = $('<a/>');
 				this.m_text = $('<span/>');
-				var _style = this.conf.style.match(/simpleBox/) ? 'sBox' : 'sctble';
+				var _style = this.conf.style.match(/simple/) ? 'sBox' : 'sctble';
 				
 				this.m_input.append(this.m_text).attr({
 					id: this.attrs.id+'_dammy',
@@ -114,7 +114,7 @@
 				this.mat = $('<div/>');
 				
 				// Customized
-				if(_style=='sBox'){
+				if(_style=='simple'){
 					this.mat.append(this.temp.selectable);
 				}else{
 					this.mat.append(this.temp.simpleBox);
@@ -140,6 +140,7 @@
 			
 			this._div = $('<div class="body"/>');
 			if(has_optgroup){
+				this.mat.addClass('otpgroup');
 				var _optgroup = $('optgroup',this.target);
 				var _option = [];
 				
@@ -161,11 +162,12 @@
 				$('div',this.mat).append(this._div);
 				
 			}else{
+				this.mat.addClass('nooptgroup');
 				var _option = $('option',this.target);
 				for(var i=0;i<_option.length;i++){
 					generate_anchors($(_option[i]),this._div);
 				}
-				$('div',this.mat).append(this._div).addClass('nooptg');
+				$('div',this.mat).append(this._div.addClass('nooptg'));
 			}
 			
 			// For rebuilding
