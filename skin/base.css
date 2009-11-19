@@ -75,20 +75,16 @@ div.sctble_mat {
 /* Pulldown Mat (No Optgroups)
 =================================*/
 	
-div.sctble_mat.nooptg p {
-	border: solid #999 1px;
-	border-top: none;
-	border-left: none;
-	padding: .5em 1em;
+div.sctble_mat.nooptgroup div.body {
+	padding: .5em .6em;
 	line-height: 1.9;
 }
 
 /* Date (Inline)
 =================================*/
 
-div.sctble_mat.sctble.m_year p,
-div.sctble_mat.sctble.m_month p {
-	padding-left: .6em;
+div.sctble_mat.sctble.m_year div.body,
+div.sctble_mat.sctble.m_month div.body {
 }
 		
 	div.sctble_mat.sctble.m_year a,
@@ -118,7 +114,7 @@ div.sBox.s_year { width: 6em }
 div.sBox.s_month,
 div.sBox.s_day { width: 5em }
 
-	div.sctble_mat.sBox p {
+	div.sctble_mat.sBox div {
 		border: none;
 		padding: 0;
 		line-height: 1.5;
