@@ -6,7 +6,7 @@
 /* Clearfix
 =================================*/
 
-.tab:after {
+.clearfix:after {
  content: "."; 
  display: block; 
  height: 0; 
@@ -14,15 +14,15 @@
  visibility: hidden;
 }
 
-.tab {
+.clearfix {
 	display: inline-block;
 }
 
 /* Hide from Mac IE \*/
-.tab {
+.clearfix {
 	display: block;
 }
-* html .tab {
+* html .clearfix {
 	height: 1%;
 }
 /* Hide from Mac IE */
@@ -41,30 +41,17 @@ body {
 }
 
 h1 {
-	border: solid #93af72 1px;
-	border-left-width: 5px;
-	border-top: none;
-	border-right: none;
-	padding: 0 0 .3em .4em;
-	font-size: 116%;
-	font-weight: normal;
 }
 h1:first-letter {
-	color: #93af72;
 }
 
 	h1 a {
-		border-bottom: dotted #93af72 1px;
-		text-decoration: none;
 	}
 
 a {
-	color: #93af72;
 }
 
 a:hover {
-	border: none;
-	text-decoration: none;
 }
 
 div.sctble_mat {
@@ -75,55 +62,25 @@ div.sctble_mat {
 *  FRAME
 * ========================================= */
 
+h2 {
+	padding: 1em 0 .5em;
+}
+
 p#skin {
-	margin-top: 1em;
+	margin-top: 1.5em;
 }
 
-div.tabArea {
-	margin-top: 1em;
-	font-size: 93%;
+dl {
+    padding: 0 1em 1em;
 }
 
-	ul.tab {
-	}
-	
-		ul.tab li {
-			float: left;
-			margin-right: .5em;
-		}
-		
-			ul.tab li a {
-				border: solid #93af72 1px;
-				border-bottom: none;
-				padding: .3em .7em;
-				display: block;
-				color: #262626;
-				background: #FFF;
-				text-decoration: none;
-			}
-			
-			ul.tab li a:hover,
-			ul.tab li a.active {
-				background: #f2f8ec;
-			}
-			
-			ul.tab li a.active {
-				color: #000;
-				font-weight: bold;
-			}
-	
-	dl {
-		border: solid #93af72 1px;
-		padding: 0 1em 1em;
-	}
-	
-		dl dt {
-			padding-top: 1em;
-		}
-			
-		dl dd {
-			padding-top: .5em;
-		}
+    dl dt {
+    	padding-top: 1.5em;
+    }
+    	
+    dl dd {
+    	padding-top: .5em;
+    }
 	
 /* =========================================
 *  jQuery selectable
