@@ -308,7 +308,7 @@
 				mat_hide();
 				
 				if(_this.conf.callback && typeof _this.conf.callback=='function'){
-					_this.conf.callback();
+					_this.conf.callback.call(_this.target);
 				}
 				
 				_this.m_input.focus();
