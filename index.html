@@ -31,9 +31,10 @@
 		$("#callback").jQselectable({
 			style: "simple",
 			height: 150,
-			opacity: .9
-		},function(){
-			if($("#callback").val().length>0) window.location = $("#callback").val();
+			opacity: .9,
+			callback: function(){
+				if($(this).val().length>0) window.location = $(this).val();
+			}
 		});
 		
 		// change skins but not for IE
@@ -52,7 +53,11 @@
 </head>
 
 <body>
-<h1>jQselectable : make selectbox so useful &gt; <a href="http://jqselectable.googlecode.com">project home</a></h1>
+<h1>jQselectable : make selectbox so useful</h1>
+<div class="summary">
+	<p>This is sample page of jQselectable project.<br />
+	</p>
+</div>
 <p id="skin">change skins：<a href="#selectable">selectable</a> | <a href="#natural">natural</a></p>
 <h2>Default selectbox</h2>
 <dl id="noapply">
@@ -565,7 +570,8 @@
     	</select>
     </dd>
 </dl>
-</div>
-</form>
+
+<p>Copyright 2008-2009 <a href="http://moto-mono.net">5509</a>(nori) Some Rights Reserved.</p>
+
 </body>
 </html>
