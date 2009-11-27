@@ -38,9 +38,20 @@ html {
 body {
 	padding: 1em;
 	height: 100%;
+	color: #252525;
+	background: #ccc;
+	font-family: Helvetica;
+}
+
+p.note {
+	margin: 0 auto;
+	width: 830px;
+	padding: 0 0 .5em;
+	text-align: right;
 }
 
 h1 {
+	text-align: center;
 }
 h1:first-letter {
 }
@@ -49,9 +60,12 @@ h1:first-letter {
 	}
 
 a {
+	color: #00f;
+	text-decoration: underline;
 }
 
 a:hover {
+	text-decoration: none;
 }
 
 div.sctble_mat {
@@ -62,8 +76,21 @@ div.sctble_mat {
 *  FRAME
 * ========================================= */
 
+div.pagebody {
+	margin: 0 auto 1em;
+	padding: 15px;
+	width: 800px;
+	background: #fafafa;
+}
+
 h2 {
-	padding: 1em 0 .5em;
+	margin-top: 1em;
+	border: solid #ccc 1px;
+	border-top: none;
+	border-right: none;
+	border-left-width: 5px;
+	padding: .3em .7em;
+	font-size: 116%;
 }
 
 p#skin {
@@ -81,6 +108,13 @@ dl {
     dl dd {
     	padding-top: .5em;
     }
+    
+p.copy {
+	margin-top: 1em;
+	border-top: solid #ccc 1px;
+	padding: 1em 0 0;
+	text-align: center;
+}
 	
 /* =========================================
 *  jQuery selectable
