@@ -8,9 +8,7 @@ pre, form, fieldset, input, textarea, p, blockquote, th, td {
   padding: 0;
 }
 
-html { overflow-y: scroll }
 body { line-height: 1.4 }
-body * {	font-family: "メイリオ", "Meiryo", Verdana, Helvetica, "ＭＳ Ｐゴシック", "MS P Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kakugo Pro W3", Osaka, sans-serif }
 ul, ol {	list-style: none }
 table {	border-collapse: collapse }
 img, fieldset { border: none }
