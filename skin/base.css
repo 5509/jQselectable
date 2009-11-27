@@ -114,7 +114,7 @@ div.sBox.s_year { width: 6em }
 div.sBox.s_month,
 div.sBox.s_day { width: 5em }
 
-	div.sctble_mat.sBox div {
+	div.sctble_mat.sBox div.body {
 		border: none;
 		padding: 0;
 		line-height: 1.5;
