@@ -59,7 +59,7 @@
 	<p id="skin">change styles：<a href="#selectable">selectable</a> | <a href="#natural">natural</a></p>
 	<h2>Default selectbox</h2>
 	<dl id="noapply">
-	    <dt><label for="pref_noapply">1) 都道府県適用前</label></dt>
+	    <dt><label for="pref_noapply">1) Default selectbox</label></dt>
 	    <dd>
 	    	<select id="pref_noapply" name="pref_noapply" class="">
 	    		<optgroup label="北海道">
@@ -135,7 +135,7 @@
 	
 	<h2>jQselectable</h2>
 	<dl id="selectable">
-	    <dt><label for="pref">2) 都道府県 optgroupあり、selected属性なし、<strong>selectable</strong></label></dt>
+	    <dt><label for="pref">2) Prefectures with optgroup not using selected, <strong>selectable</strong></label></dt>
 	    <dd>
 	    	<select id="pref" name="pref" class="selectable">
 	    		<optgroup label="北海道">
@@ -207,7 +207,7 @@
 	    		</optgroup>
 	    	</select>
 	    </dd>
-	    <dt><label for="pref2">3) 都道府県 optgroupあり、selected属性あり、<strong>selectable</strong></label></dt>
+	    <dt><label for="pref2">3) Prefectures with optgroup using selected, <strong>selectable</strong></label></dt>
 	    <dd>
 	    	<select id="pref2" name="pref2" class="selectable">
 	    		<optgroup label="北海道">
@@ -279,7 +279,7 @@
 	    		</optgroup>
 	    	</select>
 	    </dd>
-	    <dt><label for="pref_noopt">4) 都道府県 optgroupなし、改行指定、<strong>selectable</strong></label></dt>
+	    <dt><label for="pref_noopt">4) Prefectures without optgrout using br class, <strong>selectable</strong></label></dt>
 	    <dd>
 	    	<select id="pref_noopt" name="pref_noopt" class="selectable">
 	    		<option value="01" class="br">北海道</option>
@@ -331,7 +331,7 @@
 	    		<option value="47">沖縄県</option>
 	    	</select>
 	    </dd>
-	    <dt>5) 日付、改行指定、<strong>selectable</strong></dt>
+	    <dt>5) Days usign br class, <strong>selectable</strong></dt>
 	    <dd>
 	    	<select name="date_year" id="date_year" class="selectable m_year">
 	    		<option value="1980">1980</option>
@@ -417,7 +417,7 @@
 	
 	<h2>Simplebox</h2>
 	<dl id="simpleBox">
-	    <dt><label for="pref_noopt2">6) 都道府県 optgroupなし、<strong>simpleBox</strong></label></dt>
+	    <dt><label for="pref_noopt2">6) Prefectures without optgroup, <strong>simpleBox</strong></label></dt>
 	    <dd>
 	    	<select id="pref_noopt2" name="pref_noopt2" class="simpleBox">
 	    		<option value="01">北海道</option>
@@ -469,7 +469,7 @@
 	    		<option value="47">沖縄県</option>
 	    	</select>
 	    </dd>
-	    <dt>7) 日付、<strong>simpleBox</strong></dt>
+	    <dt>7) Days, <strong>simpleBox</strong></dt>
 	    <dd>
 	    	<select name="date_year2" id="date_year2" class="simpleBox s_year">
 	    		<option value="1980">1980</option>
@@ -502,7 +502,7 @@
 	    		<option value="2007">2007</option>
 	    		<option value="2008">2008</option>
 	    		<option value="2009">2009</option>
-	    	</select> 年
+	    	</select> /
 	    	<select name="date_month2" id="date_month2" class="simpleBox s_month">
 	    		<option value="1">1</option>
 	    		<option value="2">2</option>
@@ -516,7 +516,7 @@
 	    		<option value="10">10</option>
 	    		<option value="11">11</option>
 	    		<option value="12">12</option>
-	    	</select> 月
+	    	</select> /
 	    	<select name="date_day2" id="date_day2" class="simpleBox s_day">
 	    		<option value="1">1</option>
 	    		<option value="2">2</option>
@@ -549,16 +549,16 @@
 	    		<option value="29">29</option>
 	    		<option value="30">30</option>
 	    		<option value="31">31</option>
-	    	</select> 日	
+	    	</select> 
 	    </dd>
 	</dl>
 	
 	<h2>Using Callback</h2>
 	<dl id="callbacks">
-	    <dt><label for="callback">8) セレクタ、<strong>Callback</strong></label></dt>
+	    <dt><label for="callback">8) Selector, <strong>Callback</strong></label></dt>
 	    <dd>
 	    	<select id="callback" name="callback" class="callback">
-	    		<option value="">選択してください</option>
+	    		<option value="">select me</option>
 	    		<option value="http://moto-mono.net/">moto-mono</option>
 	    		<option value="http://www.google.co.jp/">Goolge</option>
 	    		<option value="http://mail.google.com/">Gmail</option>
