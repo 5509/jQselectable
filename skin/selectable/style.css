@@ -12,7 +12,7 @@ a.sctble_display {
 	a.sctble_display span {
 		padding: 0 22px 0 7px;
 		height: 22px;
-		background: url(icon_select.gif) no-repeat right 0;
+		background: #fff url(icon_select.gif) no-repeat right 0;
 		line-height: 22px;
 	}
 	a.sctble_display:hover span { background-position: right -21px }
