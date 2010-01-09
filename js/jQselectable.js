@@ -2,11 +2,11 @@
 	title: jQuery.jQselectable.js (ex jQuery.selectable.js)
 	required: jQuery(tested on 1.3.2)
 	encoding: UTF-8
-	copy: Copyright 2008-2009 nori (norimania@gmail.com)
+	copy: Copyright 2008-2010 nori (norimania@gmail.com)
 	license: MIT
 	author: 5509 - http://moto-mono.net
 	archive: http://jqselectable.googlecode.com/
-	modified: 2009-11-15 03:12
+	modified: 2010-01-09 21:48
 	rebuild: 2009-09-16 22:48
 	date: 2008-09-14 02:34
  */
@@ -15,7 +15,7 @@
 	
 	// jQuery.jQselectable
 	// Make selectbox so usuful and accesible
-	// @ 2009-09-16
+	// @ 2010-01-09
 	var jQselectable = function(select,options,temp){
 		this.conf = {
 			style: 'selectable', // or 'simple'
@@ -42,6 +42,7 @@
 			id: this.target.attr('id'),
 			cl: this.target.attr('class')
 		}
+		this.generatedFlg = false;
 		
 		// Init start
 		this.init();
@@ -49,17 +50,22 @@
 	
 	jQselectable.prototype = {
 		// Init selectable
-		// @ 09-09-17 22:08
+		// @ 10-01-09 21:00
 		init: function(){
 			// Build selectable
 			this.build();
 			// Event apply
 			this.bind_events();
+			// Switch flag true
+			this.generatedFlg = true;
 		},
 		
 		// Rebuild selectable
 		// @ 09-09-18 17:28
 		rebuild: function(){
+		
+			//console.log('called rebuild');
+		
 			// unbind events from elements related selectable
 			this.m_input.unbind();
 			this.mat.unbind();
@@ -74,7 +80,7 @@
 		},
 		
 		// Building selectable from original select element
-		// @ 2009-09-16 19:15
+		// @ 2010-01-09 21:00
 		build: function(){
 			
 			// Declare flag
@@ -126,15 +132,13 @@
 			}
 			
 			// For rebuilding
-			if(this.mat.hasClass('sBox')){
-				if($('div.simple_cont',this.mat).children().length>0){
-					$('div.simple_cont',this.mat).empty();
-				}
-
-			}else{
-				if(this.mat.children().length>0){
-					$('div.sctble_cont',this.mat).empty();
-					//this.mat.empty();
+			if(this.generatedFlg){
+				this.mat.empty();
+				
+				if(_style=='simple'){
+					this.mat.append(this.temp.selectable);
+				}else{
+					this.mat.append(this.temp.simpleBox);
 				}
 			}
 			
@@ -171,7 +175,7 @@
 			}
 			
 			// For rebuilding
-			if(!$('#'+this.attrs.id+'_mat') || $('#'+this.attrs.id+'_mat').length<1){
+			if(!this.generatedFlg){
 				$('body').append(this.mat);
 				this.mat.addClass('sctble_mat').css({
 					position: 'absolute',
