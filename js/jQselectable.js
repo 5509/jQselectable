@@ -4,7 +4,7 @@
 	encoding: UTF-8
 	copy: Copyright 2008-2010 nori (norimania@gmail.com)
 	license: MIT
-	author: 5509 - http://moto-mono.net
+	author: 5509 - http://5509.me/
 	archive: http://jqselectable.googlecode.com/
 	modified: 2010-12-02 14:00
 	rebuild: 2009-09-16 22:48
@@ -304,6 +304,7 @@
 			
 			// Call selectable
 			this.m_input.click(function(event) {
+				if ( _this.mat.is(':visible') ) return false;
 				set_pos();
 				$(this).addClass('sctble_focus');
 				$('a.sctble_display').not(this).removeClass('sctble_focus');
