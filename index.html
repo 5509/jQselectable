@@ -28,7 +28,7 @@
 			opacity: .9
 		});
 		
-		$("#callback").jQselectable({
+		var callback = $("#callback").jQselectable({
 			style: "simple",
 			height: 150,
 			opacity: .9,
@@ -36,6 +36,9 @@
 				if($(this).val().length>0) window.location = $(this).val();
 			}
 		});
+		
+		$('#disabled').click(function() { callback.disabled(); });
+		$('#enabled').click(function() { callback.enabled(); });
 		
 		// change skins but not for IE
 		if(document.all){
@@ -566,6 +569,8 @@
 	    		<option value="http://www.yahoo.co.jp/">Yahoo</option>
 	    		<option value="http://www.livedoor.com/">Livedoor</option>
 	    	</select>
+	    	<input type="button" id="disabled" value="disabled" />
+	    	<input type="button" id="enabled" value="enabled" />
 	    </dd>
 	</dl>
 	

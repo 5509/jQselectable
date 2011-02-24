@@ -11,6 +11,10 @@ a.sctble_display {
 	text-decoration: none;
 	cursor: default;
 }
+a.disabled {
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
 
 	a.sctble_display span {
 		display: block;

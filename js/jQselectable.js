@@ -6,7 +6,7 @@
 	license: MIT
 	author: 5509 - http://5509.me/
 	archive: http://jqselectable.googlecode.com/
-	modified: 2010-12-02 14:00
+	modified: 2011-02-24 15:00
 	rebuild: 2009-09-16 22:48
 	date: 2008-09-14 02:34
  */
@@ -60,7 +60,48 @@
 			// Switch flag true
 			this.generatedFlg = true;
 		},
-		
+		// API : disabled, enabled
+		disabled: function() {
+			if ( !this.clickBlocker ) {
+				// Generate the clickBlocker
+				var _this = this,
+					_m = this.m_input,
+					_mPos = _m.offset();
+				this.clickBlocker = $('<div></div>')
+					.css({
+						width: _m.attr('offsetWidth'),
+						height: _m.attr('offsetHeight'),
+						position: 'absolute',
+						top: _mPos.top,
+						left: _mPos.left
+					});
+				$(window).resize(function() {
+					_mPos = _m.offset();
+					_this.clickBlocker
+						.css({
+							top: _mPos.top,
+							left: _mPos.left
+						});
+				});
+				$('body').append(this.clickBlocker);
+				
+				// Unbind events
+				this.m_input.addClass('disabled').unbind();
+				this.mat.unbind();
+				$('a',this.mat).unbind();
+				$('label[for="'+this.attrs.id+'"]').unbind();
+			}
+		},
+		enabled: function() {
+			if ( this.clickBlocker ) {
+				// Remove the clickBlocker
+				this.clickBlocker.remove();
+				this.clickBlocker = null;
+				// Bind events
+				this.m_input.removeClass('disabled');
+				this.bind_events();
+			}
+		},
 		// Rebuild selectable
 		// @ 09-09-18 17:28
 		rebuild: function() {
@@ -113,7 +154,7 @@
 				
 				this.m_input.append(this.m_text).attr({
 					id: this.attrs.id+'_dammy',
-					href: '#'
+					href: 'javascript:void(0)'
 				}).addClass('sctble_display').addClass(_style).addClass(this.attrs.cl).insertAfter(this.target);
 				this.target.hide();
 				this.mat = $('<div/>');
