@@ -73,7 +73,9 @@
 						height: _m.attr('offsetHeight'),
 						position: 'absolute',
 						top: _mPos.top,
-						left: _mPos.left
+						left: _mPos.left,
+						background: '#fff',
+						opacity: 0
 					});
 				$(window).resize(function() {
 					_mPos = _m.offset();
