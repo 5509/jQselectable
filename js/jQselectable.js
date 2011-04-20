@@ -1,14 +1,14 @@
-/*
-	title: jQuery.jQselectable.js (ex jQuery.selectable.js)
-	required: jQuery(tested on 1.4.2)
-	encoding: UTF-8
-	copy: Copyright 2008-2010 nori (norimania@gmail.com)
-	license: MIT
-	author: 5509 - http://5509.me/
-	archive: http://jqselectable.googlecode.com/
-	modified: 2010-12-02 14:00
-	rebuild: 2009-09-16 22:48
-	date: 2008-09-14 02:34
+/**
+ * jQselectable
+ *
+ * @author     : nori (norimania@gmail.com)
+ * @copyright  : 5509 (http://5509.me/)
+ * @license    : The MIT License
+ * @link       : http://5509.me/log/jqueryselectable
+ * @repository : https://github.com/5509/jQselectable
+ * @modified   : 2010-03-16 18:32
+ * @since      : 2008-09-14 02:34
+ *
  */
 
 (function($) {
