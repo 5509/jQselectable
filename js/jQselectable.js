@@ -6,7 +6,7 @@
  * @license    : The MIT License
  * @link       : http://5509.me/log/jqueryselectable
  * @repository : https://github.com/5509/jQselectable
- * @modified   : 2010-03-16 18:32
+ * @modified   : 2010-04-21 11:40
  * @since      : 2008-09-14 02:34
  */
 ;(function($) {
@@ -27,8 +27,8 @@
 			callback: null
 		}
 		this.temp = {
-			selectable: '<div class="sctble_cont"/>',
-			simpleBox: '<div class="simple_cont"/>'
+			selectable: '<div class="sctble_cont"></div>',
+			simpleBox: '<div class="simple_cont"></div>'
 		}
 		
 		// Extend confs and temps by user options
@@ -105,9 +105,6 @@
 		// Rebuild selectable
 		// @ 09-09-18 17:28
 		rebuild: function() {
-		
-			//console.log('called rebuild');
-		
 			// unbind events from elements related selectable
 			this.m_input.unbind();
 			this.mat.unbind();
@@ -126,30 +123,36 @@
 		build: function() {
 			
 			// Declare flag
-			var has_optgroup = $('optgroup',this.target).length>0 ? true : false;
+			var has_optgroup = $('optgroup', this.target).length > 0;
 			
 			var _this = this;
 			var generate_anchors = function(obj, parent) {
-				var _a = $('<a/>');
-				$(parent).append(_a);
+				// options:disabled - added at 11-04-21 11:41
+				var _option;
+				if ( obj.attr("disabled") ) {
+					_option = $('<span class="disabled"></span>');
+				} else {
+					_option = $('<a></a>');
+				}
+				$(parent).append(_option);
 				
-				_a.text(obj.text()).attr({
+				_option.text(obj.text()).attr({
 					href: '#'+encodeURI(obj.text()),
 					name: obj.val()
 				});
 				
 				if ( obj.is(':selected') ) {
 					_this.m_text.text(obj.text());
-					_a.addClass('selected');
+					_option.addClass('selected');
 				}
 				if ( obj.hasClass('br') ) {
-					_a.after('<br/>');
+					_option.after('<br/>');
 				}
 			}
 			
 			if ( !this.m_input ) {
-				this.m_input = $('<a/>');
-				this.m_text = $('<span/>');
+				this.m_input = $('<a></a>');
+				this.m_text = $('<span></span>');
 				var _style = this.conf.style.match(/simple/) ? 'sBox' : 'sctble';
 				
 				this.m_input.append(this.m_text).attr({
@@ -157,7 +160,7 @@
 					href: 'javascript:void(0)'
 				}).addClass('sctble_display').addClass(_style).addClass(this.attrs.cl).insertAfter(this.target);
 				this.target.hide();
-				this.mat = $('<div/>');
+				this.mat = $('<div></div>');
 				
 				// Customized
 				if ( _style == 'simple' ) {
@@ -182,7 +185,7 @@
 				}
 			}
 			
-			this._div = $('<div class="body"/>');
+			this._div = $('<div class="body"></div>');
 			if ( has_optgroup ) {
 				this.mat.addClass('otpgroup');
 				var _optgroup = $('optgroup', this.target);
@@ -192,12 +195,12 @@
 					_option[i] = $('option', _optgroup[i]);
 				}
 				
-				var _dl = $('<dl/>');
+				var _dl = $('<dl></dl>');
 				
 				for ( var i=0; i<_optgroup.length; i++ ) {
-					var _dt = $('<dt/>');
+					var _dt = $('<dt></dt>');
 					_dt.text($(_optgroup[i]).attr('label'));
-					var _dd = $('<dd/>');
+					var _dd = $('<dd></dd>');
 					for ( var j=0; j<_option[i].length; j++ ) {
 						generate_anchors($(_option[i][j]), _dd);
 					}

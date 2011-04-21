@@ -69,6 +69,11 @@ div.sctble_mat {
 		color: #1972ea;
 		font-weight: bold;
 	}
+	div.sctble_mat span.disabled {
+		padding-right: .7em;
+		color: #888;
+		font-weight: bold;
+	}
 	
 	div.sctble_mat a.selected {
 		color: #333;

@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<title>jQselectable : make selectbox so useful</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<link type="text/css" rel="stylesheet" href="skin/xp/style.css" />
+	<link type="text/css" rel="stylesheet" href="skin/selectable/style.css" />
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript">google.load("jquery", "1.4.2");</script>
 	<script type="text/javascript" src="js/jQselectable.js"></script>
@@ -154,13 +154,16 @@
 	    		<optgroup label="北海道">
 	    			<option value="01">北海道</option>
 	    		</optgroup>
+				<optgroup label="テスト">
+					<option value="" disabled>選択できひんやつや！</option>
+				</optgroup>
 	    		<optgroup label="東北">
-	    			<option value="02">青森県</option>
-	    			<option value="03">岩手県</option>	
-	    			<option value="04">宮城県</option>
+	    			<option value="02" disabled>青森県</option>
+	    			<option value="03" disabled>岩手県</option>
+	    			<option value="04" disabled>宮城県</option>
 	    			<option value="05">秋田県</option>
 	    			<option value="06">山形県</option>
-	    			<option value="07">福島県</option>
+	    			<option value="07" disabled>福島県</option>
 	    		</optgroup>
 	    		<optgroup label="関東">
 	    			<option value="08">東京都</option>
