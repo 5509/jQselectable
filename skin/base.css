@@ -97,11 +97,14 @@ div.sctble_mat.sctble.m_month div.body {
 }
 		
 	div.sctble_mat.sctble.m_year a,
-	div.sctble_mat.sctble.m_month a {
+	div.sctble_mat.sctble.m_month a,
+	div.sctble_mat.sctble.m_year span.disabled,
+	div.sctble_mat.sctble.m_month span.disabled {
 		padding: .4em;
 	}
 	
-	div.sctble_mat.sctble.m_day a {
+	div.sctble_mat.sctble.m_day a,
+	div.sctble_mat.sctble.m_day span.disabled {
 		display: inline-block;
 		width: 1.5em;
 		text-align: center;
@@ -129,7 +132,8 @@ div.sBox.s_day { width: 5em }
 		line-height: 1.5;
 	}
 
-	div.sBox a {
+	div.sBox a,
+	div.sBox span.disabled {
 		border: solid #dfdfdf 1px;
 		border-top: none;
 		border-right: none;
@@ -138,7 +142,8 @@ div.sBox.s_day { width: 5em }
 		text-decoration: none;
 	}
 	
-	div.sBox a.last-child {
+	div.sBox a.last-child,
+	div.sBox span.disabled.last-child{
 		border-bottom: none;
 	}
 	
