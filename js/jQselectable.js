@@ -25,11 +25,11 @@
 			top: 0,
 			left: 0,
 			callback: null
-		}
+		};
 		this.temp = {
 			selectable: '<div class="sctble_cont"></div>',
 			simpleBox: '<div class="simple_cont"></div>'
-		}
+		};
 		
 		// Extend confs and temps by user options
 		$.extend(this.conf, options || {});
@@ -40,12 +40,12 @@
 		this.attrs = {
 			id: this.target.attr('id'),
 			cl: this.target.attr('class')
-		}
+		};
 		this.generatedFlg = false;
 		
 		// Init start
 		this.init();
-	}
+	};
 	
 	jQselectable.prototype = {
 		// Init selectable
@@ -132,7 +132,7 @@
 				if ( obj.attr("disabled") ) {
 					_option = $('<span class="disabled"></span>');
 				} else {
-					_option = $('<a></a>');
+					_option = $('<a class="' + obj.attr("class") + '"></a>');
 				}
 				$(parent).append(_option);
 				
@@ -148,7 +148,7 @@
 				if ( obj.hasClass('br') ) {
 					_option.after('<br/>');
 				}
-			}
+			};
 			
 			if ( !this.m_input ) {
 				this.m_input = $('<a></a>');
@@ -288,7 +288,7 @@
 						_mat.hide();
 						break;
 				}
-			}
+			};
 			
 			// Show the mat
 			var mat_show = function() {
@@ -344,7 +344,7 @@
 					$('a.selected', _this.mat).focus();
 					clearInterval(_chk);
 				}, _interval);
-			}
+			};
 			
 			// Call selectable
 			this.m_input.click(function(event) {
@@ -427,7 +427,7 @@
 		} else {
 			return new jQselectable(this, options, temp);
 		}
-	}
+	};
 	
 	// If namespace of jQuery.fn has 'selectable', this is 'jQselectable'
 	// To prevent the interference of namespace
