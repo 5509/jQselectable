@@ -6,7 +6,7 @@
  * @license    : The MIT License
  * @link       : http://5509.me/log/jqueryselectable
  * @repository : https://github.com/5509/jQselectable
- * @modified   : 2010-04-21 11:40
+ * @modified   : 2011-11-06 23:10
  * @since      : 2008-09-14 02:34
  */
 ;(function($) {
