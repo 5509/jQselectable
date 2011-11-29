@@ -6,7 +6,7 @@
  * @license    : The MIT License
  * @link       : http://5509.me/log/jqueryselectable
  * @repository : https://github.com/5509/jQselectable
- * @modified   : 2011-11-06 23:10
+ * @modified   : 2011-11-29 21:38
  * @since      : 2008-09-14 02:34
  */
 ;(function($) {
@@ -233,7 +233,11 @@
 			// This is for IE6 that doesn't have "max-height" properties
 			if ( document.all && typeof document.body.style.maxHeight == 'undefined' ) {
 				if ( this.conf.height < this.mat.height() ) {
-					$(this._div).css('height', this.conf.height);
+					$(this._div)
+						.css({
+							height: this.conf.height
+							overflowY: 'scroll'
+						});
 				}
 			// Other browsers
 			} else {
