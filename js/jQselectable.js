@@ -10,7 +10,7 @@
  * @since      : 2008-09-14 02:34
  */
 ;(function($) {
-	
+
 	// jQuery.jQselectable
 	// Make selectbox so usuful and accesible
 	// @ 2010-01-09
@@ -30,11 +30,11 @@
 			selectable: '<div class="sctble_cont"></div>',
 			simpleBox: '<div class="simple_cont"></div>'
 		};
-		
+
 		// Extend confs and temps by user options
 		$.extend(this.conf, options || {});
 		$.extend(this.temp, temp || {});
-		
+
 		this.target = $(select);
 		this.matHeight = 0;
 		this.attrs = {
@@ -42,11 +42,11 @@
 			cl: this.target.attr('class')
 		};
 		this.generatedFlg = false;
-		
+
 		// Init start
 		this.init();
 	};
-	
+
 	jQselectable.prototype = {
 		// Init selectable
 		// @ 10-01-09 21:00
@@ -84,7 +84,7 @@
 						});
 				});
 				$('body').append(this.clickBlocker);
-				
+
 				// Unbind events
 				this.m_input.addClass('disabled').unbind();
 				this.mat.unbind();
@@ -110,21 +110,21 @@
 			this.mat.unbind();
 			$('a',this.mat).unbind();
 			$('label[for="'+this.attrs.id+'"]').unbind();
-			
+
 			// Build selectable
 			this.build();
-			
+
 			// Event apply
 			this.bind_events();
 		},
-		
+
 		// Building selectable from original select element
 		// @ 2010-01-09 21:00
 		build: function() {
-			
+
 			// Declare flag
 			var has_optgroup = $('optgroup', this.target).length > 0;
-			
+
 			var _this = this;
 			var generate_anchors = function(obj, parent) {
 				// options:disabled - added at 11-04-21 11:41
@@ -135,12 +135,12 @@
 					_option = $('<a class="' + obj.attr("class") + '"></a>');
 				}
 				$(parent).append(_option);
-				
+
 				_option.text(obj.text()).attr({
 					href: '#'+encodeURI(obj.text()),
 					name: obj.val()
 				});
-				
+
 				if ( obj.is(':selected') ) {
 					_this.m_text.text(obj.text());
 					_option.addClass('selected');
@@ -149,19 +149,19 @@
 					_option.after('<br/>');
 				}
 			};
-			
+
 			if ( !this.m_input ) {
 				this.m_input = $('<a></a>');
 				this.m_text = $('<span></span>');
 				var _style = this.conf.style.match(/simple/) ? 'sBox' : 'sctble';
-				
+
 				this.m_input.append(this.m_text).attr({
 					id: this.attrs.id+'_dammy',
 					href: 'javascript:void(0)'
 				}).addClass('sctble_display').addClass(_style).addClass(this.attrs.cl).insertAfter(this.target);
 				this.target.hide();
 				this.mat = $('<div></div>');
-				
+
 				// Customized
 				if ( _style == 'simple' ) {
 					this.mat.append(this.temp.selectable);
@@ -173,30 +173,30 @@
 					id: this.attrs.id+'_mat'
 				}).addClass(_style).addClass(this.attrs.cl);
 			}
-			
+
 			// For rebuilding
 			if ( this.generatedFlg) {
 				this.mat.empty();
-				
+
 				if ( _style == 'simple' ) {
 					this.mat.append(this.temp.selectable);
 				} else {
 					this.mat.append(this.temp.simpleBox);
 				}
 			}
-			
+
 			this._div = $('<div class="body"></div>');
 			if ( has_optgroup ) {
 				this.mat.addClass('otpgroup');
 				var _optgroup = $('optgroup', this.target);
 				var _option = [];
-				
+
 				for ( var i=0; i<_optgroup.length; i++ ) {
 					_option[i] = $('option', _optgroup[i]);
 				}
-				
+
 				var _dl = $('<dl></dl>');
-				
+
 				for ( var i=0; i<_optgroup.length; i++ ) {
 					var _dt = $('<dt></dt>');
 					_dt.text($(_optgroup[i]).attr('label'));
@@ -208,7 +208,7 @@
 				}
 				this._div.append(_dl).addClass('optg');
 				$('div', this.mat).append(this._div);
-				
+
 			} else {
 				this.mat.addClass('nooptgroup');
 				var _option = $('option', this.target);
@@ -217,7 +217,7 @@
 				}
 				$('div', this.mat).append(this._div.addClass('nooptg'));
 			}
-			
+
 			// For rebuilding
 			if ( !this.generatedFlg ) {
 				$('body').append(this.mat);
@@ -229,13 +229,13 @@
 				$('*:first-child',this.mat).addClass('first-child');
 				$('*:last-child',this.mat).addClass('last-child');
 			}
-			
+
 			// This is for IE6 that doesn't have "max-height" properties
 			if ( document.all && typeof document.body.style.maxHeight == 'undefined' ) {
 				if ( this.conf.height < this.mat.height() ) {
 					$(this._div)
 						.css({
-							height: this.conf.height
+							height: this.conf.height,
 							overflowY: 'scroll'
 						});
 				}
@@ -243,26 +243,26 @@
 			} else {
 				$(this._div).css('maxHeight', this.conf.height);
 			}
-			
+
 			// get height of the mat
 			this.mat.show();
 			this.matHeight = this.mat.attr('offsetHeight');
 			this.mat.hide();
 		},
-		
+
 		// Bind events
 		// @ 09-09-17 22:59
 		bind_events: function() {
 			var _this = this;
 			// Flag checking where the events was called
 			var is_called = true;
-			
+
 			var set_pos = function() {
 				var topPos,
 					scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
 					clientHeight = document.documentElement.clientHeight || document.body.clientHeight,
 					_pos = _this.m_input.offset();
-					
+
 				if ( clientHeight/2 < (_pos.top - scrollTop) ) {
 					topPos = _pos.top - _this.matHeight + _this.conf.top - 5;
 				} else {
@@ -276,11 +276,11 @@
 			$(window).resize(function() {
 				set_pos();
 			});
-			
+
 			// Hide all mats are displayed
 			var mat_hide = function() {
 				var _mat = $('.sctble_mat');
-				
+
 				switch( _this.conf.out ) {
 					case 'slideUp':
 						_mat.slideUp(_this.conf.outDuration);
@@ -293,22 +293,22 @@
 						break;
 				}
 			};
-			
+
 			// Show the mat
 			var mat_show = function() {
 				mat_hide();
-				
+
 				if ( _this.conf.set == 'slideDown' ) {
 					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
 						clientHeight = document.documentElement.clientHeight || document.body.clientHeight,
 						_pos = _this.m_input.offset(),
 						balance = clientHeight/2 < (_pos.top - scrollTop);
-						
+
 					if ( balance ) {
 						_this.mat.css('top', _pos.top + _this.conf.top - 5);
 					}
 				}
-				
+
 				if ( _this.conf.set == 'slideDown' ) {
 					if ( balance ) {
 						_this.mat
@@ -332,7 +332,7 @@
 				} else {
 					_this.mat.show().css('opacity', _this.conf.opacity);
 				}
-				
+
 				var _interval = isNaN(_this.conf.setDuration) ? null : _this.conf.setDuration+10;
 				if( _interval == null ) {
 					if ( _this.conf.setDuration.match(/slow/) ) {
@@ -343,20 +343,20 @@
 						interval = 210;
 					}
 				}
-				
+
 				var _chk = setInterval(function() {
 					$('a.selected', _this.mat).focus();
 					clearInterval(_chk);
 				}, _interval);
 			};
-			
+
 			// Call selectable
 			this.m_input.click(function(event) {
 				if ( _this.mat.is(':visible') ) return false;
 				set_pos();
 				$(this).addClass('sctble_focus');
 				$('a.sctble_display').not(this).removeClass('sctble_focus');
-				
+
 				mat_show();
 				event.stopPropagation();
 				return false;
@@ -369,12 +369,12 @@
 					is_called = true;
 				}
 			});
-			
+
 			// Stop event propagation
 			this.mat.click(function(event) {
 				event.stopPropagation();
 			});
-			
+
 			// Hide the mat
 			$('body, a').not('a.sctble_display').click(function(event) {
 				$('a.sctble_display').removeClass('sctble_focus');
@@ -387,7 +387,7 @@
 					mat_hide();
 				}
 			});
-			
+
 			// Click value append to both dummy and change original select value
 			$('a', this.mat).click(function() {
 				var self = $(this);
@@ -398,15 +398,15 @@
 				_this.m_input.removeClass('sctble_focus');
 				is_called = false;
 				mat_hide();
-				
+
 				if ( _this.conf.callback && typeof _this.conf.callback=='function' ) {
 					_this.conf.callback.call(_this.target);
 				}
-				
+
 				_this.m_input.focus();
 				return false;
 			});
-			
+
 			// Be able to click original select label
 			$('label[for="'+this.attrs.id+'"]').click(function(event) {
 				set_pos();
@@ -418,7 +418,7 @@
 			});
 		}
 	}
-	
+
 	// Extense the namespace of jQuery as method
 	// This function returns (the) instance(s)
 	$.fn.jQselectable = function(options, temp) {
@@ -432,12 +432,12 @@
 			return new jQselectable(this, options, temp);
 		}
 	};
-	
+
 	// If namespace of jQuery.fn has 'selectable', this is 'jQselectable'
 	// To prevent the interference of namespace
 	// You can call 'selectable' method by both 'jQuery.fn.selectable' and 'jQuery.fn.jQselectable' you like
 	if ( !jQuery.fn.selectable ) {
 		$.fn.selectable = $.fn.jQselectable;
 	}
-	
+
 })(jQuery);
