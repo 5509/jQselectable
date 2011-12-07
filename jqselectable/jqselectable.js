@@ -1,13 +1,13 @@
 /**
  * jQselectable
  *
- * @version      2.0.2
+ * @version      2.0.3
  * @author       nori (norimania@gmail.com)
  * @copyright    5509 (http://5509.me/)
  * @license      The MIT License
  * @link         https://github.com/5509/jQselectable
  *
- * 2011-12-07 19:46
+ * 2011-12-08 0:55
  */
 ;(function($, window, document, undefined) {
 
@@ -291,6 +291,8 @@
 				self._change(data.value);
 				self._removeSelected();
 				self._addSelected(data.anchor);
+
+				self.$view.focus();
 			});
 
 			self.$document.bind('click.' + self.id, function(ev) {
