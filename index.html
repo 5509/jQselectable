@@ -1,34 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta charset="UTF-8">
 	<title>jQselectable : make selectbox so useful</title>
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<link type="text/css" rel="stylesheet" href="skin/selectable/style.css" />
-	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-	<script type="text/javascript">google.load("jquery", "1.4.2");</script>
-	<script type="text/javascript" src="js/jQselectable.js"></script>
-	<script type="text/javascript">
+	<link rel="stylesheet" href="styles/style.css" />
+	<link rel="stylesheet" href="jqselectable/style/selectable/style.css" />
+	<script src="scripts/jquery.js"></script>
+	<script src="jqselectable/jQselectable.js"></script>
+	<script>
 	jQuery(function($){
 		$(".selectable").jQselectable({
-			set: "fadeIn",
-			setDuration: "fast",
+			show: "fadeIn",
+			showDuration: "fast",
 			opacity: .9
 		});
 		
 		$(".simpleBox").jQselectable({
 			style: "simple",
-			set: "slideDown",
-			out: "fadeOut",
-			setDuration: 150,
-			outDuration: 150,
+			show: "slideDown",
+			hide: "fadeOut",
+			showDuration: 150,
+			hideDuration: 150,
 			height: 150,
 			opacity: .9
 		});
 		
-		var callback = $("#callback").jQselectable({
+		var jQs = $("#callback").jQselectable({
 			style: "simple",
 			height: 150,
 			opacity: .9,
@@ -36,9 +33,22 @@
 				if($(this).val().length>0) window.location = $(this).val();
 			}
 		});
-		
-		$('#disabled').click(function() { callback.disabled(); });
-		$('#enabled').click(function() { callback.enabled(); });
+
+		$('#disabled').click(function() { jQs.disable(); });
+		$('#enabled').click(function() { jQs.enable(); });
+		$('#destroy').click(function() { jQs.destroy(); });
+
+		var num = 0;
+		var jQs2 = $("#refresh").jQselectable({
+			style: "simple",
+			height: 150,
+			opacity: 0.9
+		});
+
+		$('#add').click(function() { 
+			$('#refresh').append('<option value="value_' + num + '">value_' + (num++) + '</option>');
+			jQs2.refresh();
+		});
 		
 		// change skins but not for IE
 		if(document.all){
@@ -67,7 +77,7 @@
 
 <body>
 <p class="note"><a href="http://5509.me/log/jqueryselectable">Archive</a> | <a href="http://5509.me/">5509</a></p>
-<div class="pagebody">
+<div class="pagebody"><form>
 	<h1>jQselectable</h1>
 	<p id="skin">change styles：<a href="#selectable">selectable</a> | <a href="#natural">natural</a></p>
 	<h2>Default selectbox</h2>
@@ -575,20 +585,33 @@
 	    <dd>
 	    	<select id="callback" name="callback" class="callback">
 	    		<option value="">select me</option>
-	    		<option value="http://moto-mono.net/">moto-mono</option>
+	    		<option value="http://5509.me/">5509</option>
 	    		<option value="http://www.google.co.jp/">Goolge</option>
 	    		<option value="http://mail.google.com/">Gmail</option>
 	    		<option value="http://www.google.com/imghp?hl=ja">Google 画像検索</option>
 	    		<option value="http://www.yahoo.co.jp/">Yahoo</option>
 	    		<option value="http://www.livedoor.com/">Livedoor</option>
 	    	</select>
-	    	<input type="button" id="disabled" value="disabled" />
-	    	<input type="button" id="enabled" value="enabled" />
+	    	<input type="button" id="disabled" value="disabled">
+	    	<input type="button" id="enabled" value="enabled">
+			<input type="button" id="destroy" value="destroy">
 	    </dd>
 	</dl>
-	
-	<p class="copy">Copyright 2008-2010 <a href="http://5509.me/">5509</a> Some Rights Reserved.</p>
-</div>
+
+	<h2>Refresh</h2>
+	<dl id="refreshs">
+	    <dt><label for="refresh">8) Selector, <strong>Callback</strong></label></dt>
+	    <dd>
+	    	<select id="refresh" name="refresh" class="refresh">
+				<option value="value_00">value_00</option>
+				<option value="value_01">value_01</option>
+	    	</select>
+			<input type="button" id="add" value="add and refresh">
+	    </dd>
+	</dl>
+
+	<p class="copy">author <a href="http://5509.me/">5509</a></p>
+</form></div>
 
 </body>
 </html>
