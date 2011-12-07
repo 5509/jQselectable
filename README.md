@@ -1,9 +1,9 @@
 # jQselectable
 make selectbox so useful
 
-How about select element do you think?
-That's worse UI for the Web I think.
-Using this jQuery pluing, select element will be nicer UI.
+How about select element do you think?  
+That's worse UI for the Web I think.  
+Using this jQuery plugin, select element will be nicer UI.
 
 Thanks for your using and feedback.
 
