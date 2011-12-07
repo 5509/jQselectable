@@ -25,13 +25,15 @@
 			opacity: .9
 		});
 		
-		var jQs = $("#callback").jQselectable({
+		var jQs = $("#triggerbind").jQselectable({
 			style: "simple",
 			height: 150,
-			opacity: .9,
-			callback: function(){
-				if($(this).val().length>0) window.location = $(this).val();
-			}
+			opacity: .9
+		});
+
+		// trigger bind
+		jQs.$elem.bind('jQselectable.change', function(ev, data) {
+			location.href = data.value;
 		});
 
 		$('#disabled').click(function() { jQs.disable(); });
@@ -580,10 +582,10 @@
 	</dl>
 	
 	<h2>Using Callback</h2>
-	<dl id="callbacks">
-	    <dt><label for="callback">8) Selector, <strong>Callback</strong></label></dt>
+	<dl id="triggerbinds">
+	    <dt><label for="triggerbind">8) Selector, <strong>Callback</strong></label></dt>
 	    <dd>
-	    	<select id="callback" name="callback" class="callback">
+	    	<select id="triggerbind" name="triggerbind" class="triggerbind">
 	    		<option value="">select me</option>
 	    		<option value="http://5509.me/">5509</option>
 	    		<option value="http://www.google.co.jp/">Goolge</option>

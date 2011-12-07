@@ -1,13 +1,13 @@
 /**
  * jQselectable
  *
- * @version      2.0.1
+ * @version      2.0.2
  * @author       nori (norimania@gmail.com)
  * @copyright    5509 (http://5509.me/)
  * @license      The MIT License
  * @link         https://github.com/5509/jQselectable
  *
- * 2011-12-07 18:55
+ * 2011-12-07 19:46
  */
 ;(function($, window, document, undefined) {
 
