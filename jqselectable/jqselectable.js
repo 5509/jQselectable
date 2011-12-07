@@ -1,13 +1,13 @@
 /**
  * jQselectable
  *
- * @version      2.0
+ * @version      2.0.1
  * @author       nori (norimania@gmail.com)
  * @copyright    5509 (http://5509.me/)
  * @license      The MIT License
  * @link         https://github.com/5509/jQselectable
  *
- * 2011-12-07 4:20
+ * 2011-12-07 18:55
  */
 ;(function($, window, document, undefined) {
 
@@ -319,12 +319,12 @@
 			self._setPosition();
 
 			if ( conf.show === 'slideDown' ) {
-				if ( balance ) {
-					scroll_top = get_scrolltop();
-					client_height = get_clientheight();
-					pos = $view.offset();
-					balance = client_height / 2 < (pos.top - scroll_top);
+				scroll_top = get_scrolltop();
+				client_height = get_clientheight();
+				pos = $view.offset();
+				balance = client_height / 2 < (pos.top - scroll_top);
 
+				if ( balance ) {
 					$list
 						.css({
 							top: pos.top + conf.top - 5
