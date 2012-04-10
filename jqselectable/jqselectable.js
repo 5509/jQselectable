@@ -1,13 +1,13 @@
 /*!
  * jQselectable
  *
- * @version      3.0
+ * @version      3.1
  * @author       nori (norimania@gmail.com)
  * @copyright    5509 (http://5509.me/)
  * @license      The MIT License
  * @link         https://github.com/5509/jQselectable
  *
- * 2012-04-10 00:00
+ * 2012-04-10 19:50
  */
 ;(function($, window, document, undefined) {
 
@@ -334,6 +334,7 @@
             });
         } else {
           $list
+            .stop(true, true)
             .slideDown(conf.showDuration)
             .css({
               opacity: conf.opacity
@@ -346,6 +347,7 @@
             display: 'block',
             opacity: 0
           })
+          .stop(true, true)
           .fadeTo(conf.showDuration, conf.opacity);
       } else {
         $list
@@ -375,10 +377,14 @@
 
       switch( conf.hide ) {
       case 'slideUp':
-        $list.slideUp(conf.hideDuration);
+        $list
+          .stop(true, true)
+          .slideUp(conf.hideDuration);
         break;
       case 'fadeOut':
-        $list.fadeOut(conf.hideDuration);
+        $list
+          .stop(true, true)
+          .fadeOut(conf.hideDuration);
         break;
       default:
         $list.hide();
@@ -442,10 +448,10 @@
     destroy: function() {
       var self = this;
 
+      self.map = {};
       self.$view.remove();
       self.$list.remove();
       self.$elem.show();
-      self.$document.unbind('click.' + self.id);
 
       self.$elem.trigger('jQselectable.destroy');
     }
