@@ -42,9 +42,9 @@ jQselectable has some APIs listed below.
 
 with
 
-	var jqs = $(selector).jQselectable();
-	jqs.disable(); // disabled
+	var $jqs = $(selector).jQselectable();
+	$jqs.jQselectable('disable'); // disabled
 
 	// some code
 
-	jqs.enable(); // enabled
+	$jqs.jQselectable('enable'); // enabled
