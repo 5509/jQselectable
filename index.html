@@ -21,7 +21,6 @@
 <p class="note"><a href="http://5509.me/log/jqueryselectable">Archive</a> | <a href="http://5509.me/">5509</a></p>
 <div class="pagebody"><form>
 	<h1>jQselectable</h1>
-	<p id="skin">change styles：<a href="#selectable">selectable</a> | <a href="#natural">natural</a></p>
 	<h2>Default selectbox</h2>
 	<dl id="noapply">
 	    <dt><label for="pref_noapply">1) Default selectbox</label></dt>
@@ -608,18 +607,6 @@
 		jqs.jQselectable('refresh');
 	});
 }());
-	
-// change skins but not for IE
-if ( document.all ) {
-	$("#skin").remove();
-} else {
-	var css = $("link[type='text/css']");
-	$("#skin a").click(function(){
-		var href = this.href.split("#")[1];
-		css[1].href = css[1].href.replace(/(skin\/)\w+(\/style.css)/,"$1"+href+"$2");
-		return false;
-	});
-}
 </script>
 
 </body>
