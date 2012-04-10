@@ -5,66 +5,6 @@
 	<title>jQselectable : make selectbox so useful</title>
 	<link rel="stylesheet" href="styles/style.css" />
 	<link rel="stylesheet" href="jqselectable/style/selectable/style.css" />
-	<script src="scripts/jquery.js"></script>
-	<script src="jqselectable/jqselectable.js"></script>
-	<script>
-	jQuery(function($){
-		$(".selectable").jQselectable({
-			show: "fadeIn",
-			showDuration: "fast",
-			opacity: .9
-		});
-		
-		$(".simpleBox").jQselectable({
-			style: "simple",
-			show: "slideDown",
-			hide: "fadeOut",
-			showDuration: 150,
-			hideDuration: 150,
-			height: 150,
-			opacity: .9
-		});
-		
-		var jQs = $("#triggerbind").jQselectable({
-			style: "simple",
-			height: 150,
-			opacity: .9
-		});
-
-		// trigger bind
-		jQs.$elem.bind('jQselectable.change', function(ev, data) {
-			location.href = data.value;
-		});
-
-		$('#disabled').click(function() { jQs.disable(); });
-		$('#enabled').click(function() { jQs.enable(); });
-		$('#destroy').click(function() { jQs.destroy(); });
-
-		var num = 0;
-		var jQs2 = $("#refresh").jQselectable({
-			style: "simple",
-			height: 150,
-			opacity: 0.9
-		});
-
-		$('#add').click(function() { 
-			$('#refresh').append('<option value="value_' + num + '">value_' + (num++) + '</option>');
-			jQs2.refresh();
-		});
-		
-		// change skins but not for IE
-		if(document.all){
-			$("#skin").remove();
-		}else{
-			var css = $("link[type='text/css']");
-			$("#skin a").click(function(){
-				var href = this.href.split("#")[1];
-				css[1].href = css[1].href.replace(/(skin\/)\w+(\/style.css)/,"$1"+href+"$2");
-				return false;
-			});
-		}
-	});
-	</script>
 	<script>
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-4011945-3']);
@@ -614,6 +554,73 @@
 
 	<p class="copy">author <a href="http://5509.me/">5509</a></p>
 </form></div>
+
+<script src="scripts/jquery.js"></script>
+<script src="jqselectable/jqselectable.js"></script>
+<script>
+(function() {
+	$(".selectable").jQselectable({
+		show: "fadeIn",
+		showDuration: "fast",
+		opacity: .9
+	});
+}());
+
+(function() {
+	$(".simpleBox").jQselectable({
+		style: "simple",
+		show: "slideDown",
+		hide: "fadeOut",
+		showDuration: 150,
+		hideDuration: 150,
+		height: 150,
+		opacity: .9
+	});
+}());
+
+(function() {
+	var jqs = $("#triggerbind").jQselectable({
+		style: "simple",
+		height: 150,
+		opacity: .9
+	});
+
+	// trigger bind
+	jqs.bind('jQselectable.change', function(ev, data) {
+		location.href = data.value;
+	});
+
+	$('#disabled').click(function() { jqs.jQselectable('disable'); });
+	$('#enabled').click(function() { jqs.jQselectable('enable'); });
+	$('#destroy').click(function() { jqs.jQselectable('destroy'); });
+}());
+
+(function() {
+	var num = 0;
+	var jqs = $("#refresh").jQselectable({
+		style: "simple",
+		height: 150,
+		opacity: 0.9
+	});
+
+	$('#add').click(function() { 
+		$('#refresh').append('<option value="value_' + num + '">value_' + (num++) + '</option>');
+		jqs.jQselectable('refresh');
+	});
+}());
+	
+// change skins but not for IE
+if ( document.all ) {
+	$("#skin").remove();
+} else {
+	var css = $("link[type='text/css']");
+	$("#skin a").click(function(){
+		var href = this.href.split("#")[1];
+		css[1].href = css[1].href.replace(/(skin\/)\w+(\/style.css)/,"$1"+href+"$2");
+		return false;
+	});
+}
+</script>
 
 </body>
 </html>
