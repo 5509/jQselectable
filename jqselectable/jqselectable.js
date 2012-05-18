@@ -87,7 +87,9 @@
         $body = self.$body,
         $elem = self.$elem;
 
-      value = value.length ? value : 'nodata';
+      if(value === null || !value.length){
+        value = 'nodata';
+      }
 
       self._map();
 
