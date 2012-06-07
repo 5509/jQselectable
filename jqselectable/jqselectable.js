@@ -91,7 +91,7 @@
 
       self._map();
 
-      self.$view = self._view(self.map[value].text)
+      self.$view = self._view(self._escapeHtml(self.map[value].text))
         .addClass(self.style)
         .addClass(self.attr.klass);
 
@@ -169,7 +169,7 @@
       var self = this;
       each(option, function(i, opt) {
         var value = opt.value || 'nodata',
-          text = self.map[value].text,
+          text = self._escapeHtml(self.map[value].text),
           klass = opt.className,
           selected = opt.selected;
 
@@ -416,6 +416,10 @@
         throw new Error('Method begins with an underscore are not exposed.');
       }
       return self[api](args);
+    },
+
+    _escapeHtml: function(text) {
+      return $('<div/>').text(text).html();
     },
 
     refresh: function() {
