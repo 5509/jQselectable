@@ -87,7 +87,7 @@
         $body = self.$body,
         $elem = self.$elem;
 
-      value = value.length ? value : 'nodata';
+      value = (value && value.length) ? value : 'nodata';
 
       self._map();
 
@@ -419,7 +419,7 @@
     },
 
     _escapeHtml: function(text) {
-      return $('<div/>').text(text).html();
+      return $('<div></div>').text(text).html();
     },
 
     refresh: function() {
