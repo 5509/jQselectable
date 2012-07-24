@@ -7,7 +7,7 @@
  * @license      The MIT License
  * @link         https://github.com/5509/jQselectable
  *
- * 2012-04-10 19:50
+ * 2012-07-24 13:06
  */
 ;(function($, window, document, undefined) {
 
@@ -358,7 +358,7 @@
       }
 
       setTimeout(function() {
-        self.selected.focus();
+        if ( self.selected ) self.selected.focus();
       }, isNaN(conf.showDuration) ? (function() {
         var duration = conf.showDuration;
         return (/slow/.test(duration)) ? 610 :
@@ -486,8 +486,8 @@
       var target = ev.target,
         id = target.getAttribute('data-id');
 
-      ev.stopPropagation();
       if ( id && id in jQselectableIds ) {
+        ev.stopPropagation();
         $.each(jQselectableIds, function(key, val) {
           if ( key === id ) return;
           val._hide();
