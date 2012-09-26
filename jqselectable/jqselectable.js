@@ -48,7 +48,7 @@
       self.selected = undefined;
       self.selected_id = undefined;
 
-      self.has_no_maxheight = typeof document.body.style.maxHeight;
+      self.has_maxheight = typeof document.body.style.maxHeight;
 
       // id
       self.id = self.elem.id || 'jqs_' + parseInt(Math.random()*1000);
@@ -138,11 +138,13 @@
         scroll_top = get_scrolltop(),
         client_height = get_clientheight();
 
-      if ( client_height / 2 < pos.top - scroll_top ) {
-        top_pos = pos.top - self.list_height + conf.top - 5;
-      } else {
-        top_pos = pos.top + $view.height() * 1.3 + conf.top;
-      }
+      	// popup below if there are space below or there are no vacant above popup element
+		if (client_height + scroll_top - pos.top - $view.height() * 1.3 > self.list_height
+				|| pos.top - scroll_top < self.list_height) {
+			top_pos = pos.top + $view.height() * 1.3 + conf.top;
+		} else {
+			top_pos = pos.top - self.list_height + conf.top - 5;
+		}
 
       $list.css({
         top: top_pos,
@@ -211,7 +213,7 @@
         $elem = self.$elem;
 
       // for IE6
-      if ( self.has_no_maxheight ) {
+      if ( ! self.has_maxheight ) {
         body_style = 'height: ' + height + '; overflow-y: scroll;';
       // for other browsers
       } else {
@@ -429,7 +431,7 @@
 
       self._build();
       self._eventify();
-      
+
       self.$elem.trigger('jQselectable.refresh');
     },
 
