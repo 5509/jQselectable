@@ -51,7 +51,7 @@
       self.has_no_maxheight = typeof document.body.style.maxHeight;
 
       // id
-      self.id = self.elem.id || 'jqs_' + parseInt(Math.random()*1000);
+      self.id = self.$elem.attr('id') || 'jqs_' + parseInt(Math.random()*1000);
       jQselectableIds[self.id] = self;
 
       // id, class
